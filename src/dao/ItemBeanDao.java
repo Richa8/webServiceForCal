@@ -1,7 +1,9 @@
 package dao;
 
+import resources.ItemBean;
+
 public interface ItemBeanDao {
 
-	public void dataPersist(String itemName, int qty ,float cal);
-	public String dataRetrieve();
+	public void dataPersistDAO(ItemBean itemName);
+	public ItemBean dataRetrieveDAO();
 }

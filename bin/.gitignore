@@ -1,7 +1,2 @@
-/dao/
-/hibernate.cfg.xml
-/item.hbm.xml
-/resources/
 /services/
-/test/
-/validators/
+/dao/

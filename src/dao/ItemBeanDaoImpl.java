@@ -17,26 +17,22 @@ public class ItemBeanDaoImpl implements ItemBeanDao{
 	
 	
 	SessionFactory sf=cfg.buildSessionFactory();
-	public void dataPersist(String itemName, int qty ,float cal) {
+	public void dataPersistDAO(ItemBean itemName) {
 		
-		ItemBean itm= new ItemBean();
-		itm.setItemName(itemName);
-		itm.setQty(qty);
-		itm.setCal(cal);
 		
 		Session sess= sf.openSession();
 		Transaction t=sess.beginTransaction();
 		
 		
 		
-		sess.save(itm);
+		sess.save(itemName);
 		t.commit();
 		sess.close();
 		
 		System.out.println("done");
 	}
 	
-	public String dataRetrieve() {
+	public ItemBean dataRetrieveDAO() {
 		Session sess= sf.openSession();
 		Transaction t=sess.beginTransaction();
 		
@@ -48,12 +44,12 @@ public class ItemBeanDaoImpl implements ItemBeanDao{
 		}*/
 		ItemBean item=(ItemBean)sess.get(ItemBean.class, 1);
 		System.out.println(item.getItemName()+" "+item.getId()+" "+item.getCal());
-		return "";
+		return item;
 	}
 	
 	public static void main(String[] args) {
 		ItemBeanDaoImpl e= new ItemBeanDaoImpl();
-		e.dataRetrieve();
+		e.dataRetrieveDAO();
 		//e.dataPersist("Cool", 100, 1000);
 	}
 }
